@@ -2,7 +2,7 @@
   "name": "ridewatch",
   "version": "1.0.0",
   "main": "expo/AppEntry.js",
-  "proxy": "http://localhost:8081",
+  "proxy": "http://127.0.0.1:5000",
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",

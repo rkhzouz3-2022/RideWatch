@@ -1,9 +1,10 @@
 from flask import Flask, jsonify
 from flask_mysqldb import MySQL
+from flask_cors import CORS
 import MySQLdb.cursors
 
 app = Flask(__name__)
-
+CORS(app, resources={r"/*": {"origins": "http://localhost:8081"}})
 
 # # MySQL Configuration (update with your own credentials)
 # app.config["MYSQL_HOST"] = "localhost"  # Use server IP if remote
@@ -17,18 +18,18 @@ app = Flask(__name__)
 # # Initialize MySQL connection
 # mysql = MySQL(app)
 
-@app.route("/")
-def home():
-    return {"thing" : ["Thing1", "Thing2", "Thing3"]}
+@app.route("/createAccount", methods=["GET"])
+def validate_user():
+    return jsonify({"thing" : ["Thing1", "Thing2", "Thing3"]})
 
-@app.route("/users", methods=["GET"])
-def get_users():
-    ...
-    # cursor = mysql.connection.cursor()
-    # cursor.execute("SELECT * FROM users")  # Replace 'users' with your table name
-    # rows = cursor.fetchall()
-    # cursor.close()
-    # return jsonify(rows)
+# @app.route("/users", methods=["GET"])
+# def get_users():
+#     ...
+#     # cursor = mysql.connection.cursor()
+#     # cursor.execute("SELECT * FROM users")  # Replace 'users' with your table name
+#     # rows = cursor.fetchall()
+#     # cursor.close()
+#     # return jsonify(rows)
 
 
 if __name__ == "__main__":
